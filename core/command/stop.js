@@ -1,11 +1,13 @@
 const http = require('http');
 const getRemotePort = require('../util/getRemotePort');
+const getRemoteHost = require('../util/getRemoteHost');
 const logger = require('../util/logger')('stop');
 
 module.exports = {
   execute: function () {
     const port = getRemotePort();
-    const stopUrl = `http://127.0.0.1:${port}/stop`;
+    const host = getRemoteHost();
+    const stopUrl = `${host}:${port}/stop`;
     return new Promise((resolve, reject) => {
       logger.log('Attempting to ping ', stopUrl);
       http.get(stopUrl, (resp) => {

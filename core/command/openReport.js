@@ -3,12 +3,14 @@ const logger = require('../util/logger')('openReport');
 const path = require('path');
 const http = require('http');
 const getRemotePort = require('../util/getRemotePort');
+const getRemoteHost = require('../util/getRemoteHost');
 const BACKSTOP_REPORT_SIGNATURE_RE = /BackstopJS Report/i;
 
 module.exports = {
   execute: function (config) {
     const port = getRemotePort();
-    const remoteReportUrl = `http://127.0.0.1:${port}/${config.compareReportURL}?remote`;
+    const host = getRemoteHost();
+    const remoteReportUrl = `${host}:${port}/${config.compareReportURL}?remote`;
     return new Promise(function (resolve, reject) {
       // would prefer to ping a http://127.0.0.1:${port}/remote with {backstopRemote:ok} response
       logger.log('Attempting to ping ', remoteReportUrl);
