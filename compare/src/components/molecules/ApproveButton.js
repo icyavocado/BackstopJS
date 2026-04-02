@@ -6,7 +6,7 @@ import { colors, fonts } from '../../styles';
 
 const REMOTE_HOST = location.protocol + '//' + location.hostname || 'http://127.0.0.1';
 const REMOTE_PORT = location.port;
-const REMOTE_PATH = location.pathname;
+const REMOTE_PATH = '/vt';
 
 const APPROVE_STATUS_TO_LABEL_MAP = Object.freeze({
   INITIAL: 'Approve',
