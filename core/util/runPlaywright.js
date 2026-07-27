@@ -442,6 +442,7 @@ async function captureScreenshot (page, browserContext, selector, selectorMap, c
     try {
       await page.screenshot({
         path: filePath,
+        animations: 'disabled',
         fullPage
       });
     } catch (e) {
